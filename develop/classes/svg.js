@@ -1,18 +1,31 @@
-class SVG {
-    constructor(data){
-        this.inputText = data.inputText
-        this.textColor = data.textColor
-        this.shape = data.shape
-        this.shapeColor = data.shapeColor
-        this.svg = ''
-    }
+// class SVG {
+//     constructor(data){
+//         this.inputText = data.inputText
+//         this.textColor = data.textColor
+//         this.shape = data.shape
+//         this.shapeColor = data.shapeColor
+//         this.svg = ''
+//     }
 
-    printText(){
-        console.log(this.inputText)
-    }
+//     printText(){
+//         console.log(this.inputText)
+//     }
+// }
+
+// module.exports = SVG
+
+const createSVG = (data, shape) => {
+    console.log(shape)
+    return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+
+    ${shape}
+    
+    <text x="150" y="125" font-size="50" text-anchor="middle" fill="${data.textColor}">${data.inputText}</text>
+    
+    </svg>`
 }
 
-module.exports = SVG
+module.exports = { createSVG }
 
 // `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 

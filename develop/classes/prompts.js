@@ -1,9 +1,18 @@
 const inquirer = require('inquirer')
-const SVG = require('./svg.js')
+const { createSVG } = require('./svg.js')
+const { createShapeXML } = require('./shape.js')
+const { writeFile } = require('fs/promises')
+const { join } = require('path')
 
-const svg = new SVG
+
 
 class Prompts {
+
+    constructor(){
+        this.svg = ''
+        this.shapeXML = ''
+    }
+
     run() {
         console.log('hi')
         inquirer
@@ -32,8 +41,17 @@ class Prompts {
             ])
             .then((data) => {
                 console.log(data)
-                svg.printText(data)
+                this.shapeXML = createShapeXML(data)
+                this.svg = createSVG(data, this.shapeXML)
             })
+            .then(() => {
+                console.log(this.svg)
+                return writeFile(
+                    join(__dirname, '..', 'output', 'logo.svg'),
+                    this.svg
+                )
+            })
+            .then(() => console.log('Created logo.svg!'))
     }
 }
 
