@@ -1,4 +1,7 @@
 const inquirer = require('inquirer')
+const SVG = require('./svg.js')
+
+const svg = new SVG
 
 class Prompts {
     run() {
@@ -29,6 +32,7 @@ class Prompts {
             ])
             .then((data) => {
                 console.log(data)
+                svg.printText(data)
             })
     }
 }
