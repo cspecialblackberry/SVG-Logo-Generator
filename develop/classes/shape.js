@@ -1,5 +1,4 @@
-
-
+//returns an xml string based on the user's selections
 const createShapeXML = (shape, color) => {
     if(shape === 'triangle'){
         return `<polygon points="150,10 45,180 245,180" fill="${color}" />`

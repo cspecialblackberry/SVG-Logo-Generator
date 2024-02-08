@@ -13,6 +13,7 @@ class Prompts {
     }
 
     run() {
+        //run prompts
         inquirer
             .prompt([
                 {
@@ -38,16 +39,19 @@ class Prompts {
                 }
             ])
             .then((data) => {
+                //run functions to create svg
                 this.shapeXML = createShapeXML(data.shape, data.shapeColor)
                 this.svg = createSVG(data.textColor, data.inputText, this.shapeXML)
                 
             })
             .then(() => {
+                //create the output file
                 return writeFile(
                     join(__dirname, '..', 'output', 'logo.svg'),
                     this.svg
                 )
             })
+            //confirmation message
             .then(() => console.log('Created logo.svg!'))
     }
 }

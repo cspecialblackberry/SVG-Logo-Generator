@@ -1,19 +1,4 @@
-// class SVG {
-//     constructor(data){
-//         this.inputText = data.inputText
-//         this.textColor = data.textColor
-//         this.shape = data.shape
-//         this.shapeColor = data.shapeColor
-//         this.svg = ''
-//     }
-
-//     printText(){
-//         console.log(this.inputText)
-//     }
-// }
-
-// module.exports = SVG
-
+//returns an xml element with the user's selections
 const createSVG = (color, text, shape) => {
     return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 
