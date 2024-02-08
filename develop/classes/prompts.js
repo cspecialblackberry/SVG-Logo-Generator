@@ -5,7 +5,6 @@ const { writeFile } = require('fs/promises')
 const { join } = require('path')
 
 
-
 class Prompts {
 
     constructor(){
@@ -14,7 +13,6 @@ class Prompts {
     }
 
     run() {
-        console.log('hi')
         inquirer
             .prompt([
                 {
@@ -36,16 +34,15 @@ class Prompts {
                 {
                     type: 'input',
                     name: 'shapeColor',
-                    message: 'What color would you like yout shape to be?'
+                    message: 'What color would you like your shape to be?'
                 }
             ])
             .then((data) => {
-                console.log(data)
-                this.shapeXML = createShapeXML(data)
-                this.svg = createSVG(data, this.shapeXML)
+                this.shapeXML = createShapeXML(data.shape, data.shapeColor)
+                this.svg = createSVG(data.textColor, data.inputText, this.shapeXML)
+                
             })
             .then(() => {
-                console.log(this.svg)
                 return writeFile(
                     join(__dirname, '..', 'output', 'logo.svg'),
                     this.svg
